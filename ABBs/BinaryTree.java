@@ -1,5 +1,3 @@
-package ABBs;
-
 import java.util.List;
 
 public interface BinaryTree<T> {

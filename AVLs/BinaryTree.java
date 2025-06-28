@@ -2,7 +2,7 @@ import java.util.List;
 
 public interface BinaryTree<T> {
 
-    public Object getRoot();
+    public T getRoot();
 
     public void setRoot(T item);
 

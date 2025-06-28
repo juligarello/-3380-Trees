@@ -1,12 +1,10 @@
-package ABBs;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class BSTSet<T extends Comparable<? super T>> implements SortedSet<T> {
 
-    protected TreeNode<T> root;
+    protected NodeBST<T> root;
     private int size;
 
     public BSTSet() {

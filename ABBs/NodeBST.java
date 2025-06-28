@@ -1,15 +1,13 @@
-package ABBs;
-
 import java.util.LinkedList;
 import java.util.List;
 
-public class TreeNode<T extends Comparable<? super T>> implements BinaryTree<T> {
+public class NodeBST<T extends Comparable<? super T>> implements BinaryTree<T> {
 
     protected T key;
-    protected TreeNode<T> left;
-    protected TreeNode<T> right;
+    protected NodeBST<T> left;
+    protected NodeBST<T> right;
 
-    public TreeNode(T key) {
+    public NodeBST(T key) {
         this.key = key;
         this.left = null;
         this.right = null;
@@ -19,9 +17,9 @@ public class TreeNode<T extends Comparable<? super T>> implements BinaryTree<T> 
         return key;
     }
 
-    public TreeNode<T> add(TreeNode<T> x, T data) {
+    public NodeBST<T> add(NodeBST<T> x, T data) {
         if(x == null)
-            return new TreeNode<>(data);
+            return new NodeBST<>(data);
 
         int cmp = x.key.compareTo(data);
         if(cmp < 0) {
@@ -32,7 +30,7 @@ public class TreeNode<T extends Comparable<? super T>> implements BinaryTree<T> 
         return x;
     }
 
-    public TreeNode<T> remove(TreeNode<T> x, T data) {
+    public NodeBST<T> remove(NodeBST<T> x, T data) {
         int cmp = x.key.compareTo(data);
 
         if(cmp < 0) {
@@ -46,7 +44,7 @@ public class TreeNode<T extends Comparable<? super T>> implements BinaryTree<T> 
             if(x.right == null) {
                 return x.left;
             }
-            TreeNode<T> aux = x;
+            NodeBST<T> aux = x;
             x = minimum(aux.right);
             x.right = removeMinimum(aux.right);
             x.left = aux.left;
@@ -55,7 +53,7 @@ public class TreeNode<T extends Comparable<? super T>> implements BinaryTree<T> 
         return x;
     }
 
-    public TreeNode<T> get(TreeNode<T> x, T data) {
+    public NodeBST<T> get(NodeBST<T> x, T data) {
         if(x == null)
             return null;
         
@@ -83,21 +81,21 @@ public class TreeNode<T extends Comparable<? super T>> implements BinaryTree<T> 
         right = null;
     }
 
-    public TreeNode<T> minimum(TreeNode<T> x) {
+    public NodeBST<T> minimum(NodeBST<T> x) {
         if(x.left == null)
             return x;
         
         return minimum(x.left);
     }
 
-    public TreeNode<T> maximum(TreeNode<T> x) {
+    public NodeBST<T> maximum(NodeBST<T> x) {
         if(x.right == null)
             return x;
         
         return maximum(x.left);
     }
 
-    public TreeNode<T> removeMinimum(TreeNode<T> x) {
+    public NodeBST<T> removeMinimum(NodeBST<T> x) {
         if(x.left == null)
             return x.right;
 
@@ -105,7 +103,7 @@ public class TreeNode<T extends Comparable<? super T>> implements BinaryTree<T> 
         return x;
     }
 
-    public TreeNode<T> removeMaximum(TreeNode<T> x) {
+    public NodeBST<T> removeMaximum(NodeBST<T> x) {
         if(x.right == null)
             return x.left;
 
@@ -113,7 +111,7 @@ public class TreeNode<T extends Comparable<? super T>> implements BinaryTree<T> 
         return x;
     }
 
-    public boolean isBST(TreeNode<T> x, T min, T max) {
+    public boolean isBST(NodeBST<T> x, T min, T max) {
         if(x == null)
             return true;
         if(min != null && x.key.compareTo(min) <= 0)
